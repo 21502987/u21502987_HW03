@@ -1,0 +1,52 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<h1><b>Homepage</b></h1>
+<h2><u>An overview of the system we are building</u></h2>
+    <div class="row" style="background-color:lightgray">
+        <div class="col-lg-9">
+            <h3>Description</h3>
+            <p>This system allows a user to upload and download various files including images and videos. These files are then categorised according to their respective category that ensures that the client can find their uploaded files easily. THis file management system can help businesses to manage their files better to remove the possibility for any missing files</p>
+        </div>
+        <div class="col-lg-3">
+            <h3>Option selection</h3>
+            @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+        <table>
+            <tr>
+                <td>
+                    <label for="Document">Document</label>
+                    <input type="radio" name="Answer" id="1" value="Document" onclick="document.getElementById('1').value = this.value;">
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label for="Image">Image</label>
+                    <input type="radio" name="Answer" id="2" value="Image" onclick="document.getElementById('2').value = this.value;" />
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label for="Video">Video</label>
+                    <input type="radio" name="Answer" id="3" value="Video" onclick="document.getElementById('3').value = this.value;" />
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <input type="file" name="files" />
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <input type="submit" value="Upload" />
+                </td>
+            </tr>
+        </table>
+            }
+        </div>
+    </div>

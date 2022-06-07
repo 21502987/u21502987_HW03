@@ -1,0 +1,41 @@
+﻿@using u21502987_HWA3.Models
+@model List<FileModel>
+@{
+    ViewBag.Title = "Index";
+}
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h1><b>Image manager</b></h1>
+<h2><u>Download and delete your images</u></h2>
+<p>You will be able to view, download and delete your images that you have uploaded from the page below</p>
+
+<div class="row">
+    @foreach (FileModel File in Model)
+    {
+        <div class="col-lg-4">
+            <a class="Imagegallery" href="~/Media/Images/@File.FileName">
+                <img src="~/Media/Images/@File.FileName" width="300" height="300" />
+            </a>
+            <br />
+            <p>@File.FileName</p>
+
+            <button class="btn">
+                @Html.ActionLink("Download", "DownloadFile",
+               new { fileName = File.FileName })
+            </button>
+
+            <button class="btn">
+                @Html.ActionLink("Delete", "DeleteFile",
+               new { fileName = File.FileName },
+               new { onclick = "return confirm('Are you sure you want delete this Image?')" })
+            </button>
+            <br />
+        </div>
+    }
+</div>
+
+

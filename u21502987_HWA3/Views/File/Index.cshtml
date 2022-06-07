@@ -1,0 +1,32 @@
+﻿@using u21502987_HWA3.Models
+@model List<FileModel>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h1><b>File manager</b></h1>
+<h2><u>Download and delete your files</u></h2>
+<p>You will be able to view, download and delete your files that you have uploaded from the page below</p>
+<table class="table">
+    <thead>
+    <th>File Name</th>
+    <th>Download Option</th>
+    <th>Delete Option</th>
+    </thead>
+    @foreach (FileModel File in Model)
+    {
+        <tr>
+            <td>@File.FileName</td>
+            <td>
+                <button class="btn">
+                    @Html.ActionLink("Download", "DownloadFile", new { FileName = File.FileName })
+                </button>
+            </td>
+            <td>
+                <button class="btn">
+                    @Html.ActionLink("Delete", "DeleteFile", new { FileName = File.FileName }, new { onclick = "return confirm('Are you sure you want to delete this file?')" })
+                </button>
+            </td>
+        </tr>
+    }
+</table>
